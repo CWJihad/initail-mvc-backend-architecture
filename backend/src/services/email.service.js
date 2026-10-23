@@ -139,7 +139,7 @@ const sendEmailVerification = async (to, otp, name = "there") => {
 
 const sendResetPasswordEmail = async (to, otp, name = "there") => {
   console.log("Password Reset Email", to, otp);
-  const subject = "Password Reset Email";
+  const subject = "Forgot Password Verification";
 
   const html = emailLayout({
     preheader: `Your NEXMO TAG password reset code is ${otp}`,
