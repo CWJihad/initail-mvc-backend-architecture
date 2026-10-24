@@ -12,7 +12,7 @@ const createUser = async (userBody) => {
 
   if (userBody.role === "user" || userBody.role === "admin") {
 
-    sendEmailVerification(userBody.email, oneTimeCode);
+    sendEmailVerification(userBody.email, oneTimeCode, userBody.fullName);
   }
   return User.create({ ...userBody, oneTimeCode });
 };

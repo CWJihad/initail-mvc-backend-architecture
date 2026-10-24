@@ -2,14 +2,6 @@ const nodemailer = require("nodemailer");
 const config = require("../config/config");
 const logger = require("../config/logger");
 
-const escapeHtml = (str = "") =>
-  String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-
 const LOGO_URL =
   "https://res.cloudinary.com/dfhfxt50d/image/upload/v1780554698/samples/cloudinary-icon.png";
 
@@ -53,7 +45,7 @@ const emailLayout = ({ preheader = "", title, subtitle, content }) => `
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 12px;">
                 <tr>
                   <td align="center" style="background-color:#ffffff; border-radius:12px; padding:6px;">
-                    <img src="${LOGO_URL}" alt="NEXMO TAG" width="48" style="display:block; width:48px; height:auto; border-radius:8px;" />
+                    <img src="${LOGO_URL}" alt="Social-SaaS" width="48" style="display:block; width:48px; height:auto; border-radius:8px;" />
                   </td>
                 </tr>
               </table>
@@ -73,7 +65,7 @@ const emailLayout = ({ preheader = "", title, subtitle, content }) => `
           <tr>
             <td align="center" style="background-color:#111118; border-top:1px solid #1e1e2a; padding:14px 32px;">
               <p style="margin:0; font-size:11px; line-height:1.6; color:#6b6b85;">
-                &copy; ${new Date().getFullYear()} NEXMO TAG. All rights reserved.
+                &copy; ${new Date().getFullYear()} Social-SaaS. All rights reserved.
                 &nbsp;·&nbsp;
                 <br/>
                 <a href="https://jihad-protfolio.vercel.app/" target="_blank" style="color:#6b6b85; text-decoration:none;">
@@ -97,13 +89,13 @@ const sendEmailVerification = async (to, otp, name = "there") => {
   const subject = "User verification code";
 
   const html = emailLayout({
-    preheader: `Your NEXMO TAG verification code is ${otp}`,
-    title: "Welcome to NEXMO TAG",
+    preheader: `Your Social-SaaS verification code is ${otp}`,
+    title: "Welcome to Social-SaaS",
     subtitle: "Verify your email to activate your account",
     content: `
-      <p style="margin:0 0 8px; font-size:17px; font-weight:600; color:#e8e8f0;">Hi, ${escapeHtml(name)} 👋</p>
+      <p style="margin:0 0 8px; font-size:17px; font-weight:600; color:#e8e8f0;">Hi, ${name} 👋</p>
       <p style="margin:0; font-size:14px; line-height:1.6; color:#9090a8;">
-        Thank you for joining NEXMO TAG! Your account is almost ready. Enter the code below to verify your email.
+        Thank you for joining Social-SaaS! Your account is almost ready. Enter the code below to verify your email.
       </p>
 
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:20px 0;">
@@ -142,11 +134,11 @@ const sendResetPasswordEmail = async (to, otp, name = "there") => {
   const subject = "Forgot Password Verification";
 
   const html = emailLayout({
-    preheader: `Your NEXMO TAG password reset code is ${otp}`,
+    preheader: `Your Social-SaaS password reset code is ${otp}`,
     title: "Reset Your Password",
     subtitle: "Use the OTP below to reset your password",
     content: `
-      <p style="margin:0 0 8px; font-size:17px; font-weight:600; color:#e8e8f0;">Hi, ${escapeHtml(name)} 👋</p>
+      <p style="margin:0 0 8px; font-size:17px; font-weight:600; color:#e8e8f0;">Hi, ${name} 👋</p>
       <p style="margin:0; font-size:14px; line-height:1.6; color:#9090a8;">
         We received a request to reset your password. Enter the code below to proceed.
       </p>
